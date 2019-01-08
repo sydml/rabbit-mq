@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class RabbitMqServer {
 
-    @RabbitListener(queues = "direct.queue")
-    public void directReceive(String message) {
-        System.out.println("接收到的消息是:" + message);
-    }
+   /* @RabbitListener(queues = "direct.queue")
+    public String directReceive(String message) {
+        return message;
+    }*/
 
     @RabbitListener(queues = "topic.queue")
     public void topicReceive(String message) {
