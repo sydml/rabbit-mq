@@ -1,6 +1,6 @@
 package com.yml.rabbitmq.demo.service;
 
-import com.yml.rabbitmq.springamqp.client.RabbitMqSender;
+import com.yml.rabbitmq.springamqp.sender.RabbitMqSender;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
