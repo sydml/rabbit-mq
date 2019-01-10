@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.configure;
+package com.yml.rabbitmq.springamqp.configure;
 
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -134,7 +134,7 @@ public class RabbitMqConfig {
      * @return
      */
     @Bean
-    public Binding bindingTopicWithoutWildcardGExchangeTest(@Qualifier("topic.queue.test") Queue queue, TopicExchange exchange) {
+    public Binding bindingTopicWithoutWildcardExchangeTest(@Qualifier("topic.queue.test") Queue queue, TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with("topic.queue.test");
     }
 

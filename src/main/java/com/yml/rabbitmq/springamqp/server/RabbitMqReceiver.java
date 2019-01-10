@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.server;
+package com.yml.rabbitmq.springamqp.server;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class RabbitMqServer {
+public class RabbitMqReceiver {
 
-   /* @RabbitListener(queues = "direct.queue")
+    @RabbitListener(queues = "direct.queue")
     public String directReceive(String message) {
         return message;
-    }*/
+    }
 
     @RabbitListener(queues = "topic.queue")
     public void topicReceive(String message) {

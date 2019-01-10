@@ -1,6 +1,6 @@
 package com.yml.rabbitmq.demo.service;
 
-import com.yml.rabbitmq.client.RabbitMqClient;
+import com.yml.rabbitmq.springamqp.client.RabbitMqSender;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,14 +15,14 @@ import java.lang.reflect.InvocationTargetException;
 public class RabbitService implements IRabbitService{
 
     @Autowired
-    private RabbitMqClient rabbitMqClient;
+    private RabbitMqSender rabbitMqSender;
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     @Override
     public void sendMessage(String message) {
-        rabbitMqClient.directModeSend(message);
+        rabbitMqSender.directModeSend(message);
     }
 
     @Override

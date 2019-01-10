@@ -1,6 +1,6 @@
 package com.yml.rabbitmq;
 
-import com.yml.rabbitmq.client.RabbitMqClient;
+import com.yml.rabbitmq.springamqp.client.RabbitMqSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -20,7 +20,7 @@ public class RabbitMqApplicationTests {
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
 	@Autowired
-	private RabbitMqClient rabbitMqClient;
+	private RabbitMqSender rabbitMqSender;
 
 	@Test
 	public void sentMessageToServer() {
@@ -42,11 +42,11 @@ public class RabbitMqApplicationTests {
                 try {
                     start.await();
                     for (int j = 0; j < 4; j++) {
-						rabbitMqClient.topicModeSend("topic消息发送");
-                        rabbitMqClient.fanoutModeSend("线程:" + Thread.currentThread().getName() + ", fanout消息发送" + j);
-                        rabbitMqClient.topicModeSend("线程:" + Thread.currentThread().getName() + ", ttt.queue.111.234发送的消息" + j);
-                        rabbitMqClient.topicTestModeSend("线程:" + Thread.currentThread().getName() + ", topic.queue.test.exchange发送的消息" + j);
-                        rabbitMqClient.topicModeSendTest("线程:" + Thread.currentThread().getName() + ", 不指定交换机时topic.queue.test发送的消息" + j);
+                        rabbitMqSender.topicModeSend("topic消息发送");
+                        rabbitMqSender.fanoutModeSend("线程:" + Thread.currentThread().getName() + ", fanout消息发送" + j);
+                        rabbitMqSender.topicModeSend("线程:" + Thread.currentThread().getName() + ", ttt.queue.111.234发送的消息" + j);
+                        rabbitMqSender.topicTestModeSend("线程:" + Thread.currentThread().getName() + ", topic.queue.test.exchange发送的消息" + j);
+                        rabbitMqSender.topicModeSendTest("线程:" + Thread.currentThread().getName() + ", 不指定交换机时topic.queue.test发送的消息" + j);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

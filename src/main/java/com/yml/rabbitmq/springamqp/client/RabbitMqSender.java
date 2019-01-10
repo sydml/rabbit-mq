@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.client;
+package com.yml.rabbitmq.springamqp.client;
 
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.TopicExchange;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * 时间： 12:38
  */
 @Component
-public class RabbitMqClient {
+public class RabbitMqSender {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
