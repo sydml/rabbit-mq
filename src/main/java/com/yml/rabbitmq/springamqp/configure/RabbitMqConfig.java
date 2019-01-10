@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Configuration;
  * 一 direct模式上,routingKey和bindingKey必须保持一致才可以将消息发送到指定的队列上,是一对一的模式
  *
  * 二 在topic模式上,bindingKey可以以通配符的方式描述,routingKey是指定的字符,是多对多的方式
+ *
+ * 三 交换机绑定队列时用的bindingKey 和 发送消息时候用的routingKey保持一致（direct exchange）或者匹配规则一致（topic exchange）就可以将消息发送到该队列上,其中fanoutExchange是广播，只绑定队列即可，不用指定bindingKey
+
  * 这里使用的绑定交换机的方法给人误区:with里面的参数其实叫做:bindingKey
  * 只有生产者在生产消息时指定的是routingKey进行发送消息
  * bindingKey支持通配符,使用场景如下(*和#号都可以代表空的单词)
@@ -100,6 +103,8 @@ public class RabbitMqConfig {
     }
 
     /**
+     * routingKey,和bindingKey 在direct Exchange 上是一致的，但不必把对列名也写成一致的
+     *
      * 绑定队列到对应的交换机
      * 注意binding时两种通配符
      * 这里使用的方法给人误区:with后面其实叫做:bindingKey

@@ -4,6 +4,7 @@
  
 ####  二 在topic模式上,bindingKey可以以通配符的方式描述,routingKey是指定的字符,是多对多的方式
 
+####  三 交换机绑定队列时用的bindingKey 和 发送消息时候用的routingKey保持一致（direct exchange）或者匹配规则一致（topic exchange）就可以将消息发送到该队列上;其中fanoutExchange是广播，只绑定队列即可，不用指定bindingKey
 _这里使用的绑定交换机的方法给人误区:with里面的参数其实叫做:bindingKey,生产者在发送消息时指定的叫做:routingKey,
   bindingKey支持通配符,使用场景如下(*和#号都可以代表空的单词)_
 1. 注意绑定交换机时的bindingKey的命名规则是点号分割英文单词,
