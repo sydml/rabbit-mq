@@ -88,6 +88,8 @@ public class RabbitConfig {
         return new Queue(env.getProperty("log.user.queue.name.two"), true);
     }
 
+
+    //由于另一个demo已经配置过这个交换机,所以这里不能再次配置
     /*@Bean(name="logUserExchange")
     public TopicExchange logUserExchange(){
         return new TopicExchange(env.getProperty("log.user.topic.exchange.name"), true, true);
