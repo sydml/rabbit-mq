@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.demo.workerqueue;
+package com.yml.rabbitmq.origin.workerqueue;
 
 import com.rabbitmq.client.ConnectionFactory;
 import com.yml.rabbitmq.util.CastUtil;
@@ -10,7 +10,7 @@ import java.util.Properties;
  * @author Liuym
  * @date 2019/1/9 0009
  */
-public final class RabbitConnect {
+public final class RabbitConfig {
   public static ConnectionFactory getConnect(){
        ConnectionFactory factory = new ConnectionFactory();
        Properties properties = PropsUtil.loadProps("application.properties");

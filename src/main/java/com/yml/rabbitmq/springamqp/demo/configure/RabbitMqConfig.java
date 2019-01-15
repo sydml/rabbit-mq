@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.springamqp.configure;
+package com.yml.rabbitmq.springamqp.demo.configure;
 
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Qualifier;

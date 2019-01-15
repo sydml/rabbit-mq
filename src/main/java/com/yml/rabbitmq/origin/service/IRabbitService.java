@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.demo.service;
+package com.yml.rabbitmq.origin.service;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.demo.workerqueue;
+package com.yml.rabbitmq.origin.workerqueue;
 
 /**
  * @author Liuym
@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 //        String[] info = new String[]{"en","he","a"};
 //        String message = String.join(" ", info);
-//        NewTask.sendMessage(message);
-        Worker.receiveMessage();
+        Sender.sendMessage("ceshi");
+//        Receiver.receiveMessage();
     }
 }

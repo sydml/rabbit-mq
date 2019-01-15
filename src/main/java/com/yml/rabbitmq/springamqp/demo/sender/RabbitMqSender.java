@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.springamqp.sender;
+package com.yml.rabbitmq.springamqp.demo.sender;
 
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.TopicExchange;

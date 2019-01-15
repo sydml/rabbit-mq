@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.springamqp.receiver;
+package com.yml.rabbitmq.springamqp.demo.receiver;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -12,6 +12,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RabbitMqReceiver {
+
+    /*@RabbitListener(bindings = @QueueBinding(
+            exchange = @Exchange(value = "topic.exchange",durable = "true",type = "topic"),
+            value = @Queue(value = "consumer_queue",durable = "true"),
+            key = "key.#"
+    ))*/
 
     @RabbitListener(queues = "direct.queue")
     public String directReceive(String message) {
