@@ -36,7 +36,7 @@ public class RabbitMqSender {
         rabbitTemplate.convertAndSend("direct.queue", message);
     }
 
-    //topic模式
+    //topic模式 某个队列和topic交换机通过ttt.queue.*来binding,那么所有的分公司通过routingKey为 ttt.queue.companyId发送到topic 交换机上的消息,我这个队列都能监听到,类似于分公司操作什么,总公司队列都能看到
     public void topicModeSend(String message) {//topic.queue
         rabbitTemplate.convertAndSend(topicExchange.getName(), "ttt.queue.111.234", message);
     }
