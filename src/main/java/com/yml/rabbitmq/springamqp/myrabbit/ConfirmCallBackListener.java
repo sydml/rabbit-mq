@@ -1,6 +1,8 @@
 package com.yml.rabbitmq.springamqp.myrabbit;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate.ConfirmCallback;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.stereotype.Component;
@@ -12,9 +14,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ConfirmCallBackListener implements ConfirmCallback{
+    private static final Logger log= LoggerFactory.getLogger(ConfirmCallBackListener.class);
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-        System.out.println("confirm--:correlationData:"+correlationData+",ack:"+ack+",cause:"+cause);
+        log.info("消息发送成功:correlationData({}),ack({}),cause({})", correlationData, ack, cause);
     }
 }
 

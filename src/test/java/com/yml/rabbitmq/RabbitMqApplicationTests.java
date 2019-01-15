@@ -1,3 +1,4 @@
+/*
 package com.yml.rabbitmq;
 
 import com.yml.rabbitmq.springamqp.demo.sender.RabbitMqSender;
@@ -68,3 +69,4 @@ public class RabbitMqApplicationTests {
     }
 
 }
+*/

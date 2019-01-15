@@ -1,3 +1,4 @@
+/*
 package com.yml.rabbitmq.origin.service;
 
 import com.yml.rabbitmq.springamqp.demo.sender.RabbitMqSender;
@@ -7,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
 
+*/
 /**
  * @author Liuym
  * @date 2019/1/7 0007
- */
+ *//*
+
 @Service
 public class RabbitService implements IRabbitService{
 
@@ -37,3 +40,4 @@ public class RabbitService implements IRabbitService{
 
 
 }
+*/
