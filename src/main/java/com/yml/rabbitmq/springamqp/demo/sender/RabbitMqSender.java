@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
+ * rabbitmq 官网amqp示例
  * Created by Yuming-Liu
  * 日期： 2018-08-04
  * 时间： 12:38
@@ -25,11 +26,12 @@ public class RabbitMqSender {
 
     //direct模式
     public void directModeSend(String message) {
-        rabbitTemplate.convertAndSend(directExchange.getName(),"direct.queue", message);
+        rabbitTemplate.convertAndSend(directExchange.getName(), "direct.queue", message);
     }
 
     /**
      * 可以不绑定交换机
+     *
      * @param message
      */
     public void directModeSendTest(String message) {
@@ -42,12 +44,13 @@ public class RabbitMqSender {
     }
 
     public void topicTestModeSend(String message) {//topic.queue.test
-        rabbitTemplate.convertAndSend(topicExchange.getName(),"topic.queue.test.exchange", message);
+        rabbitTemplate.convertAndSend(topicExchange.getName(), "topic.queue.test.exchange", message);
     }
 
     /**
-     *  生产者不绑定交换机
-     *  那么只有routingKey,bindingKey和队列名三者名字完全一致的时候(并且无论是哪种类型的交换机通过BindingBuilder创建的Binding,必须要存在一个符合该条件的)才可以发送到队列,否者直接丢弃该生产消息
+     * 生产者不绑定交换机
+     * 那么只有routingKey,bindingKey和队列名三者名字完全一致的时候(并且无论是哪种类型的交换机通过BindingBuilder创建的Binding,必须要存在一个符合该条件的)才可以发送到队列,否者直接丢弃该生产消息
+     *
      * @param message
      */
     public void topicModeSendTest(String message) {
@@ -56,7 +59,7 @@ public class RabbitMqSender {
 
     //fanout模式
     public void fanoutModeSend(String message) {
-        rabbitTemplate.convertAndSend("fanout-exchange", "",message);
+        rabbitTemplate.convertAndSend("fanout-exchange", "", message);
     }
 
 }

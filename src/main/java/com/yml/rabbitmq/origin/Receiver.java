@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.origin.workerqueue;
+package com.yml.rabbitmq.origin;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -6,6 +6,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
 /**
+ * rabbitmq 官网示例，原生java使用rabbitmq
  * @author Liuym
  * @date 2019/1/9 0009
  */

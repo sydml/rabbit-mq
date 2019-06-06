@@ -8,6 +8,7 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
 
 /**
+ * amqp 消息消费处理类
  * Created by Yuming-Liu
  * 日期： 2019-01-15
  * 时间： 20:55
@@ -33,6 +34,7 @@ public class CommonMqListener {
 
     /**
      * 接收消息确认策略
+     *
      * @param message
      * @param channel
      * @param tag
@@ -41,14 +43,13 @@ public class CommonMqListener {
     public void processMessage(String message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
         System.out.println(message);
         try {
-
-            channel.basicAck(tag,false);            // 确认消息,如果确认过,即便后面重新拒收入队,下一次也只能消费一次
+            channel.basicAck(tag, false);            // 确认消息,如果确认过,即便后面重新拒收入队,下一次也只能消费一次
 //            channel.basicNack(tag, false,true);//拒收消息,是否重新入队,如果有下一个消费者,会传给下一个消费者
 //            channel.basicReject(tag, true);
             System.out.println("confirm over...");
         } catch (Exception e) {
             try {
-                channel.basicNack(tag, false,true);
+                channel.basicNack(tag, false, true);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

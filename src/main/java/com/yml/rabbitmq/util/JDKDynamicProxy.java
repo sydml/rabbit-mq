@@ -13,7 +13,8 @@ public class JDKDynamicProxy implements InvocationHandler {
 
     private static JDKDynamicProxy DYNAMIC_PROXY = null;
 
-    private JDKDynamicProxy(){}
+    private JDKDynamicProxy() {
+    }
 
     public static JDKDynamicProxy getDynamicProxy() {
         return DYNAMIC_PROXY == null ? new JDKDynamicProxy() : DYNAMIC_PROXY;

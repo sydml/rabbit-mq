@@ -16,7 +16,7 @@ public class Test {
         Double d = new Double(String.valueOf(amount));
         System.out.println(df.format(d));*/
         List<Person> personList = new ArrayList<>();
-        personList.forEach(it->it.getName());
+        personList.forEach(it -> it.getName());
     }
 }
 

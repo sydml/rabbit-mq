@@ -36,8 +36,8 @@ public class UserLogListener {
             channel.basicAck(deliveryTag, false);
 //            channel.basicNack(deliveryTag, false,true);//拒收消息,是否重新入队,如果有下一个消费者,会传给下一个消费者
 //            channel.basicReject(deliveryTag,true);
-            System.out.println(message);
-            System.out.println("已确认2");
+            System.out.println("消费队列："+message);
+            System.out.println("消费队列已确认");
         } catch (Exception e) {
             e.printStackTrace();
         }

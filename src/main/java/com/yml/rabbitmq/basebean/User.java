@@ -7,7 +7,7 @@ import java.io.Serializable;
  * 日期： 2019-01-15
  * 时间： 20:39
  */
-public class User implements Serializable{
+public class User implements Serializable {
     private String username;
     private String password;
     private Integer age;

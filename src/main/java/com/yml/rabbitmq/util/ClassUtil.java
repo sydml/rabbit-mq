@@ -95,8 +95,8 @@ public class ClassUtil {
                 if (StringUtil.isNotEmpty(packageName)) {
                     className = packageName + "." + className;
                 }
-                doAddClass(classSet,className);
-            }else{
+                doAddClass(classSet, className);
+            } else {
                 String subPackagePath = fileName;
                 if (StringUtil.isNotEmpty(packagePath)) {
                     subPackagePath = packagePath + "/" + subPackagePath;

@@ -25,19 +25,19 @@ public final class PropsUtil {
             is = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
             if (is == null) {
                 throw new FileNotFoundException(fileName + "file is not found");
-            }else {
+            } else {
                 props = new Properties();
                 props.load(is);
             }
 
         } catch (IOException e) {
 
-        }finally {
+        } finally {
             if (is != null) {
                 try {
                     is.close();
                 } catch (IOException e) {
-                    LOGGER.error("close inputStream failure" ,e);
+                    LOGGER.error("close inputStream failure", e);
                 }
             }
         }

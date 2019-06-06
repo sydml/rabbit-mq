@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.origin.workerqueue;
+package com.yml.rabbitmq.origin;
 
 import com.rabbitmq.client.*;
 
@@ -20,7 +20,7 @@ public class Sender {
             System.out.println("Sender sendMessage:" + message);
         } catch (Exception e) {
 
-        }finally {
+        } finally {
 
         }
     }

@@ -7,13 +7,14 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate.ReturnCallback;
 import org.springframework.stereotype.Component;
 
 /**
+ * 处理消息发送失败返回的监听器
  * @author Liuym
  * @date 2019/1/15 0015
  */
 
 @Component
-public class ReturnCallBackListener implements ReturnCallback{
-    private static final Logger log= LoggerFactory.getLogger(ReturnCallBackListener.class);
+public class ReturnCallBackListener implements ReturnCallback {
+    private static final Logger log = LoggerFactory.getLogger(ReturnCallBackListener.class);
 
     @Override
     public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {

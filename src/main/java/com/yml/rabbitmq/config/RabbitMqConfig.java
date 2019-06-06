@@ -43,7 +43,7 @@ public class RabbitMqConfig {
      * 开启单个监听线程
      */
     @Bean
-    public SimpleRabbitListenerContainerFactory singleListenerContainer(){
+    public SimpleRabbitListenerContainerFactory singleListenerContainer() {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setMessageConverter(new Jackson2JsonMessageConverter());
@@ -60,24 +60,22 @@ public class RabbitMqConfig {
      * 配置了MessageConverter
      * 开启手动确认模式
      * 开启多个监听线程
-     *
      */
     @Bean
-    public SimpleRabbitListenerContainerFactory multiListenerContainer(){
+    public SimpleRabbitListenerContainerFactory multiListenerContainer() {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        factoryConfigurer.configure(factory,connectionFactory);
+        factoryConfigurer.configure(factory, connectionFactory);
         factory.setMessageConverter(new Jackson2JsonMessageConverter());
         factory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
-        factory.setConcurrentConsumers(env.getProperty("spring.rabbitmq.listener.concurrency",int.class));
-        factory.setMaxConcurrentConsumers(env.getProperty("spring.rabbitmq.listener.max-concurrency",int.class));
-        factory.setPrefetchCount(env.getProperty("spring.rabbitmq.listener.prefetch",int.class));
+        factory.setConcurrentConsumers(env.getProperty("spring.rabbitmq.listener.concurrency", int.class));
+        factory.setMaxConcurrentConsumers(env.getProperty("spring.rabbitmq.listener.max-concurrency", int.class));
+        factory.setPrefetchCount(env.getProperty("spring.rabbitmq.listener.prefetch", int.class));
         return factory;
     }
 
     /**
      * rabbitTemplate 基础配置
      * 配置了发送消息的回调确认
-     *
      */
     @Bean
     public RabbitTemplate rabbitTemplate() {
@@ -96,12 +94,12 @@ public class RabbitMqConfig {
      * 持久化开启
      */
     @Bean
-    public Queue logUserQueue(){
+    public Queue logUserQueue() {
         return new Queue(env.getProperty("log.user.queue.name"), true);
     }
 
     @Bean
-    public Queue logUserQueue2(){
+    public Queue logUserQueue2() {
         return new Queue(env.getProperty("log.user.queue.name.two"), true);
     }
 
@@ -113,19 +111,19 @@ public class RabbitMqConfig {
     }*/
 
     /**
-     *
      * 接收消息时配置队列和交换机的路由 routingKey，确定队列如何通过路由规则获取消息
      * 发送消息时配置rabbitTemplate和交换机的bindingKey
-     *
      */
     @Bean
-    public Binding logUserBind(){
-        return BindingBuilder.bind(logUserQueue()).to(new RabbitMqConfig().testDirectExchange()).with(env.getProperty("log.user.routing.key.name"));
+    public Binding logUserBind() {
+        return BindingBuilder.bind(logUserQueue()).to(new RabbitMqConfig().testDirectExchange()).with(env.getProperty("log.user.routing" +
+                ".key.name"));
     }
 
     @Bean
-    public Binding logUserBind2(){
-        return BindingBuilder.bind(logUserQueue2()).to(new RabbitMqConfig().testDirectExchange()).with(env.getProperty("log.user.routing.key.name.two"));
+    public Binding logUserBind2() {
+        return BindingBuilder.bind(logUserQueue2()).to(new RabbitMqConfig().testDirectExchange()).with(env.getProperty("log.user.routing" +
+                ".key.name.two"));
     }
 
     /**
@@ -135,8 +133,8 @@ public class RabbitMqConfig {
      *
      * 二 在topic模式上,bindingKey可以以通配符的方式描述,routingKey是指定的字符,是多对多的方式
      *
-     * 三 交换机绑定队列时用的bindingKey 和 发送消息时候用的routingKey保持一致（direct exchange）或者匹配规则一致（topic exchange）就可以将消息发送到该队列上,其中fanoutExchange是广播，只绑定队列即可，不用指定bindingKey
-
+     * 三 交换机绑定队列时用的bindingKey 和 发送消息时候用的routingKey保持一致（direct exchange）或者匹配规则一致（topic exchange）就可以将消息发送到该队列上,
+     * 其中fanoutExchange是广播，只绑定队列即可，不用指定bindingKey
      * 这里使用的绑定交换机的方法给人误区:with里面的参数其实叫做:bindingKey
      * 只有生产者在生产消息时指定的是routingKey进行发送消息
      * bindingKey支持通配符,使用场景如下(*和#号都可以代表空的单词)
@@ -153,7 +151,6 @@ public class RabbitMqConfig {
      */
 
 
-
     // Direct 模式
 
     /**
@@ -165,6 +162,7 @@ public class RabbitMqConfig {
     public Queue directQueue() {
         return new Queue("direct.queue");
     }
+
     /**
      * 定义direct交换机
      *
@@ -224,7 +222,7 @@ public class RabbitMqConfig {
 
     /**
      * routingKey,和bindingKey 在direct Exchange 上是一致的，但不必把对列名也写成一致的
-     *
+     * <p>
      * 绑定队列到对应的交换机
      * 注意binding时两种通配符
      * 这里使用的方法给人误区:with后面其实叫做:bindingKey
@@ -256,6 +254,7 @@ public class RabbitMqConfig {
 
     /**
      * 另一个绑定
+     *
      * @return
      */
     @Bean

@@ -1,4 +1,4 @@
-package com.yml.rabbitmq.origin.workerqueue;
+package com.yml.rabbitmq.origin;
 
 /**
  * @author Liuym

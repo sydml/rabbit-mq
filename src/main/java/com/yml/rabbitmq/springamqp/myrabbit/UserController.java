@@ -37,8 +37,8 @@ public class UserController {
             String message = JsonUtil.toJson(user);
             rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
             rabbitTemplate.setExchange("topic.exchange");
-            rabbitTemplate.setRoutingKey(env.getProperty("log.user.routing.key.name"));
-            rabbitTemplate.convertAndSend(message);
+//            rabbitTemplate.setRoutingKey(env.getProperty("log.user.routing.key.name"));
+//            rabbitTemplate.convertAndSend(message);
             rabbitTemplate.setRoutingKey(env.getProperty("log.user.routing.key.name.two"));
             String message2 = JsonUtil.toJson(user2);
             rabbitTemplate.convertAndSend(message2);

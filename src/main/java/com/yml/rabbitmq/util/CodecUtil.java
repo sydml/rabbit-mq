@@ -21,7 +21,7 @@ public final class CodecUtil {
     public static String encodeURL(String source) {
         String target;
         try {
-            target = URLEncoder.encode(source,"UTF-8");
+            target = URLEncoder.encode(source, "UTF-8");
         } catch (Exception e) {
             LOGGER.error("encode url failure", e);
             throw new RuntimeException(e);
