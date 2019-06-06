@@ -37,9 +37,17 @@ _这里使用的绑定交换机的方法给人误区:with里面的参数其实�
 #### routingKey（接收消息） bindingKey（发送消息） 区别
 - 生产者发送消息时发送者是不需要知道消费者的接收队列是哪个；
 - 消费者接收消息时，消费者同样不需要知道生产者是谁；
-- 接收消息时：routingKey 队列和交换机绑定时使用routingKey,确定业务中某个队列receive 消息时是如何路由到绑定的交换机上；
-- 发送消息时：bindingKey 负责绑定交换机，使用rabbitTemplate.convertAndSend()时指定发送规则，这里的bindingKey对于topic交换机支持通配符。
+- 发送消息时（生产者）：bindingKey 负责绑定交换机，使用rabbitTemplate.convertAndSend()时指定发送规则，这里的bindingKey对于topic交换机支持通配符。
+- 接收消息时（消费者）：routingKey 队列和交换机绑定时使用routingKey,交换机如何路由消息到消费队列；
 
 #### 关于动态监听 由于@RabbitListener 只能在编译期硬编码指定消费队列，如果要动态的增删队列，需要自己实现listener
 - 使用RabbitAdmin获取connection ,channel,加上自己开启线程方式轮询队列消费可以实现，但是还是想基于@RabbitListener 的实现方式，动态的将队列及绑定控制起来这个有空研究吧
 - SimpleMessageListenerContainer 的使用
+#### 消息发送后确认机制，发送成功或者发送失败执行回调
+- ConfirmCallBackListener 消息确认监听器
+- ReturnCallBackListener 处理消息发送失败返回的监听器
+
+#### 使用@RabbitListener 存在业务代码入侵问题，如果项目不使用rabbitMq,这些注解便入侵到业务代码中
+- 解决方案：
+1. 使用线程实现自己的Listener
+2. 底层接口需要统一兼容各种队列
