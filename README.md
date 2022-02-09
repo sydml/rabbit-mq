@@ -51,3 +51,6 @@ _这里使用的绑定交换机的方法给人误区:with里面的参数其实�
 - 解决方案：
 1. 使用线程实现自己的Listener
 2. 底层接口需要统一兼容各种队列
+
+#### 新增docker-compose 构建rabbitmq
+docker-compose执行文件：docker-compose.yml

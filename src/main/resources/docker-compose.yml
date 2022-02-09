@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    hostname: myRabbitmq
+    restart: always
+    ports:
+      - 15672:15672
+      - 5672:5672
+    volumes:
+      - ./data:/var/lib/rabbitmq:rw
+      - ./config/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    environment:
+      #RABBITMQ_DEFAULT_USER: root  # 配置文件里已经指定，不能重复指定
+      #RABBITMQ_DEFAULT_PASS: admin	# 配置文件里已经指定，不能重复指定
+      CONTAINER_TIMEZONE: Asia/Shanghai
